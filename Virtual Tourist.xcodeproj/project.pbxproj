@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		AC04C23B1B61699000D67F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04C23A1B61699000D67F33 /* AppDelegate.swift */; };
 		AC04C23E1B61699000D67F33 /* Virtual_Tourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC04C23C1B61699000D67F33 /* Virtual_Tourist.xcdatamodeld */; };
-		AC04C2401B61699000D67F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04C23F1B61699000D67F33 /* ViewController.swift */; };
 		AC04C2431B61699000D67F33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC04C2411B61699000D67F33 /* Main.storyboard */; };
 		AC04C2451B61699000D67F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC04C2441B61699000D67F33 /* Images.xcassets */; };
 		AC04C2481B61699000D67F33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC04C2461B61699000D67F33 /* LaunchScreen.xib */; };
 		AC04C2541B61699000D67F33 /* Virtual_TouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04C2531B61699000D67F33 /* Virtual_TouristTests.swift */; };
+		AC3CEC171B67407400BDB502 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3CEC161B67407400BDB502 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +31,13 @@
 		AC04C2391B61699000D67F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC04C23A1B61699000D67F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC04C23D1B61699000D67F33 /* Virtual_Tourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Virtual_Tourist.xcdatamodel; sourceTree = "<group>"; };
-		AC04C23F1B61699000D67F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC04C2421B61699000D67F33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC04C2441B61699000D67F33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AC04C2471B61699000D67F33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AC04C24D1B61699000D67F33 /* Virtual TouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Virtual TouristTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC04C2521B61699000D67F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC04C2531B61699000D67F33 /* Virtual_TouristTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtual_TouristTests.swift; sourceTree = "<group>"; };
+		AC3CEC161B67407400BDB502 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				AC04C23A1B61699000D67F33 /* AppDelegate.swift */,
-				AC04C23F1B61699000D67F33 /* ViewController.swift */,
+				AC3CEC161B67407400BDB502 /* ViewController.swift */,
 				AC04C2411B61699000D67F33 /* Main.storyboard */,
 				AC04C2441B61699000D67F33 /* Images.xcassets */,
 				AC04C2461B61699000D67F33 /* LaunchScreen.xib */,
@@ -215,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC04C2401B61699000D67F33 /* ViewController.swift in Sources */,
+				AC3CEC171B67407400BDB502 /* ViewController.swift in Sources */,
 				AC04C23E1B61699000D67F33 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				AC04C23B1B61699000D67F33 /* AppDelegate.swift in Sources */,
 			);
@@ -413,6 +413,7 @@
 				AC04C2591B61699000D67F33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC04C25A1B61699000D67F33 /* Build configuration list for PBXNativeTarget "Virtual TouristTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +422,7 @@
 				AC04C25C1B61699000D67F33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

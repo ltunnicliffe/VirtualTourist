@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NavigationViewController1.swift
 //  Virtual Tourist
 //
 //  Created by Luke on 2015/07/28.
@@ -7,14 +7,8 @@
 //
 
 import UIKit
-import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
-    
-    
-    
-    @IBOutlet var mapView: MKMapView!
-
+class NavigationViewController1: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
