@@ -13,7 +13,9 @@
 		AC04C2451B61699000D67F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC04C2441B61699000D67F33 /* Images.xcassets */; };
 		AC04C2481B61699000D67F33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC04C2461B61699000D67F33 /* LaunchScreen.xib */; };
 		AC04C2541B61699000D67F33 /* Virtual_TouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04C2531B61699000D67F33 /* Virtual_TouristTests.swift */; };
-		AC3CEC171B67407400BDB502 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3CEC161B67407400BDB502 /* ViewController.swift */; };
+		AC3CEC171B67407400BDB502 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3CEC161B67407400BDB502 /* MapViewController.swift */; };
+		ACACD35E1B68734D009496E6 /* AnnotationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD35D1B68734D009496E6 /* AnnotationData.swift */; };
+		ACACD3601B68782A009496E6 /* FlickrCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,9 @@
 		AC04C24D1B61699000D67F33 /* Virtual TouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Virtual TouristTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC04C2521B61699000D67F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC04C2531B61699000D67F33 /* Virtual_TouristTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtual_TouristTests.swift; sourceTree = "<group>"; };
-		AC3CEC161B67407400BDB502 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC3CEC161B67407400BDB502 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		ACACD35D1B68734D009496E6 /* AnnotationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationData.swift; sourceTree = "<group>"; };
+		ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				AC04C23A1B61699000D67F33 /* AppDelegate.swift */,
-				AC3CEC161B67407400BDB502 /* ViewController.swift */,
+				AC3CEC161B67407400BDB502 /* MapViewController.swift */,
+				ACACD35D1B68734D009496E6 /* AnnotationData.swift */,
 				AC04C2411B61699000D67F33 /* Main.storyboard */,
+				ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */,
 				AC04C2441B61699000D67F33 /* Images.xcassets */,
 				AC04C2461B61699000D67F33 /* LaunchScreen.xib */,
 				AC04C23C1B61699000D67F33 /* Virtual_Tourist.xcdatamodeld */,
@@ -215,7 +221,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3CEC171B67407400BDB502 /* ViewController.swift in Sources */,
+				ACACD35E1B68734D009496E6 /* AnnotationData.swift in Sources */,
+				AC3CEC171B67407400BDB502 /* MapViewController.swift in Sources */,
+				ACACD3601B68782A009496E6 /* FlickrCollectionViewController.swift in Sources */,
 				AC04C23E1B61699000D67F33 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				AC04C23B1B61699000D67F33 /* AppDelegate.swift in Sources */,
 			);

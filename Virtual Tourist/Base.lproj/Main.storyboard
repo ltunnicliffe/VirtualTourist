@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Virtual Tourist-->
         <scene sceneID="Wcz-qt-4sZ">
             <objects>
-                <viewController id="4mt-m5-BJM" customClass="ViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Virtual Tourist" id="4mt-m5-BJM" customClass="MapViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Pd-rC-tJ4"/>
                         <viewControllerLayoutGuide type="bottom" id="dNO-P3-VNq"/>
@@ -19,6 +19,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NWr-Gw-vGG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4mt-m5-BJM" id="wTT-EA-sTz"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,7 +32,13 @@
                             <constraint firstItem="dNO-P3-VNq" firstAttribute="top" secondItem="NWr-Gw-vGG" secondAttribute="bottom" id="svP-0q-ijE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D0e-dJ-Ytv"/>
+                    <navigationItem key="navigationItem" id="D0e-dJ-Ytv">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ahF-pT-MUg">
+                            <connections>
+                                <action selector="deleteButton:" destination="4mt-m5-BJM" id="P7s-js-mhi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="NWr-Gw-vGG" id="9qq-J4-OdL"/>
                         <segue destination="05P-0s-fp7" kind="show" id="pyN-Ii-Igs"/>
@@ -39,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="-45" y="212"/>
         </scene>
-        <!--View Controller-->
+        <!--Flickr Collection View Controller-->
         <scene sceneID="jZ2-NX-nU3">
             <objects>
-                <viewController id="05P-0s-fp7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FlickrCollectionViewController" id="05P-0s-fp7" customClass="FlickrCollectionViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rag-8e-yhD"/>
                         <viewControllerLayoutGuide type="bottom" id="q4D-x4-gqH"/>

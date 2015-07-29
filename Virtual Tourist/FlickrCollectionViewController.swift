@@ -1,20 +1,18 @@
 //
-//  ViewController.swift
+//  FlickrCollectionViewController.swift
 //  Virtual Tourist
 //
-//  Created by Luke on 2015/07/28.
+//  Created by Luke on 2015/07/29.
 //  Copyright (c) 2015年 Luke Tunnicliffe. All rights reserved.
 //
 
 import UIKit
+import CoreData
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
-    
-    
-    
-    @IBOutlet var mapView: MKMapView!
+//class FlickrCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,NSFetchedResultsControllerDelegate {
 
+    class FlickrCollectionViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
