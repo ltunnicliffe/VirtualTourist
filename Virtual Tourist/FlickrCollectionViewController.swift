@@ -14,16 +14,29 @@ import MapKit
 
     class FlickrCollectionViewController: UIViewController{
 
+    @IBOutlet var mapView2: MKMapView!
+        
+        var transferredLatitude:Double!
+        var transferredLongitude:Double!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        FlickrLogin.sharedInstance().loginToFlickr(transferredLatitude, selectedLongitude: transferredLongitude)
+
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func newCollectionButton(sender: AnyObject) {
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+        
+        
+
     
 
     /*

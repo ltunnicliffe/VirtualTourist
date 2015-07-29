@@ -73,7 +73,11 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AhT-LI-GJP"/>
-                                    <barButtonItem title="New Collection" id="h7K-xZ-Ldg"/>
+                                    <barButtonItem title="New Collection" id="h7K-xZ-Ldg">
+                                        <connections>
+                                            <action selector="newCollectionButton:" destination="05P-0s-fp7" id="4oz-ct-nF4"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ex1-li-BdO"/>
                                 </items>
                             </toolbar>
@@ -112,6 +116,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="UJM-oY-xNx" secondAttribute="trailing" constant="-16" id="xBC-bt-ZDT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView2" destination="UJM-oY-xNx" id="saa-LZ-Z5T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OP1-RK-kIi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
