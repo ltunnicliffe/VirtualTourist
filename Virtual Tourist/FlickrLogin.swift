@@ -56,7 +56,7 @@ class FlickrLogin: NSObject {
         
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
             if let error = downloadError {
-                println("Could not complete the request \(error)")
+           //     println("Could not complete the request \(error)")
             } else {
                 
                 var parsingError: NSError? = nil
@@ -83,7 +83,7 @@ class FlickrLogin: NSObject {
 
              
                     }
-                      println(photosArray)
+              //        println(photosArray)
 
                     }
                     

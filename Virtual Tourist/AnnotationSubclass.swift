@@ -6,18 +6,18 @@
 //  Copyright (c) 2015年 Luke Tunnicliffe. All rights reserved.
 //
 
-
-import UIKit
-import MapKit
-
-class CustomAnnotation : MKPinAnnotationView {
-    
-    var centerOffset = MKPinAnnotationView.centerOffSet
-    
-    
-    
-    init(centerOffset: initWithFrame:frame) {
-        self.coordinate = coordinate
-        self.title = title
-    }
-}
+//
+//import UIKit
+//import MapKit
+//
+//class CustomAnnotation : MKPinAnnotationView {
+//    
+//    var centerOffset = MKPinAnnotationView.centerOffSet
+//    
+//    
+//    
+//    init(centerOffset: initWithFrame:frame) {
+//        self.coordinate = coordinate
+//        self.title = title
+//    }
+//}

@@ -14,7 +14,6 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
 
     
   //  class FlickrCollectionViewController: UIViewController{
-    
    @IBOutlet weak var collectionView: UICollectionView!
 
 
@@ -78,7 +77,7 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
         
         func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
-            println(photosArray.count)
+      //      println(photosArray.count)
            return photosArray.count
             //return 5
         }
@@ -91,7 +90,7 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
           
             var url = NSURL(string: chosenString)
             
-            println(url)
+          //  println(url)
                 
 
             let urlRequest = NSURLRequest(URL: url!)
