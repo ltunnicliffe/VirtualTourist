@@ -14,7 +14,8 @@
 		AC04C2481B61699000D67F33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC04C2461B61699000D67F33 /* LaunchScreen.xib */; };
 		AC04C2541B61699000D67F33 /* Virtual_TouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04C2531B61699000D67F33 /* Virtual_TouristTests.swift */; };
 		AC3CEC171B67407400BDB502 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3CEC161B67407400BDB502 /* MapViewController.swift */; };
-		ACACD35E1B68734D009496E6 /* AnnotationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD35D1B68734D009496E6 /* AnnotationData.swift */; };
+		AC5828F81B6A23090008B85B /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5828F71B6A23090008B85B /* PhotoCell.swift */; };
+		AC5828FA1B6A2A1A0008B85B /* AnnotationSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5828F91B6A2A1A0008B85B /* AnnotationSubclass.swift */; };
 		ACACD3601B68782A009496E6 /* FlickrCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */; };
 		ACBB224E1B68EF390068EDB6 /* FlickrLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB224D1B68EF390068EDB6 /* FlickrLogin.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +42,8 @@
 		AC04C2521B61699000D67F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC04C2531B61699000D67F33 /* Virtual_TouristTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtual_TouristTests.swift; sourceTree = "<group>"; };
 		AC3CEC161B67407400BDB502 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		ACACD35D1B68734D009496E6 /* AnnotationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationData.swift; sourceTree = "<group>"; };
+		AC5828F71B6A23090008B85B /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = ../PhotoCell.swift; sourceTree = "<group>"; };
+		AC5828F91B6A2A1A0008B85B /* AnnotationSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationSubclass.swift; sourceTree = "<group>"; };
 		ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrCollectionViewController.swift; sourceTree = "<group>"; };
 		ACBB224D1B68EF390068EDB6 /* FlickrLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,9 +87,10 @@
 		AC04C2371B61699000D67F33 /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				AC5828F71B6A23090008B85B /* PhotoCell.swift */,
 				AC04C23A1B61699000D67F33 /* AppDelegate.swift */,
 				AC3CEC161B67407400BDB502 /* MapViewController.swift */,
-				ACACD35D1B68734D009496E6 /* AnnotationData.swift */,
+				AC5828F91B6A2A1A0008B85B /* AnnotationSubclass.swift */,
 				AC04C2411B61699000D67F33 /* Main.storyboard */,
 				ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */,
 				ACBB224D1B68EF390068EDB6 /* FlickrLogin.swift */,
@@ -225,8 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACBB224E1B68EF390068EDB6 /* FlickrLogin.swift in Sources */,
-				ACACD35E1B68734D009496E6 /* AnnotationData.swift in Sources */,
+				AC5828F81B6A23090008B85B /* PhotoCell.swift in Sources */,
 				AC3CEC171B67407400BDB502 /* MapViewController.swift in Sources */,
+				AC5828FA1B6A2A1A0008B85B /* AnnotationSubclass.swift in Sources */,
 				ACACD3601B68782A009496E6 /* FlickrCollectionViewController.swift in Sources */,
 				AC04C23E1B61699000D67F33 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				AC04C23B1B61699000D67F33 /* AppDelegate.swift in Sources */,
@@ -375,7 +379,6 @@
 		AC04C25B1B61699000D67F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -394,7 +397,6 @@
 		AC04C25C1B61699000D67F33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+
+var photosArray = [String]()
+
+
 class FlickrLogin: NSObject {
     /* 1 - Define constants */
     let BASE_URL = "https://api.flickr.com/services/rest/"
@@ -26,7 +30,7 @@ class FlickrLogin: NSObject {
     var photoImageView: UIImageView!
     var photoTitle: UILabel!
     
-    
+
     
     func loginToFlickr(selectedLatitude:Double, selectedLongitude:Double){
         
@@ -58,74 +62,48 @@ class FlickrLogin: NSObject {
                 var parsingError: NSError? = nil
                 let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
                 
-                if let photosDictionary = parsedResult.valueForKey("photos") as? [String:AnyObject] {
+                if let photosDictionary = parsedResult.valueForKey("photos") as? NSDictionary {
                     
-                    println(photosDictionary)
+                    if let photoDictionary = photosDictionary.valueForKey("photo") as? NSArray {
+                    
+                    //var photoArray:Array = Array(arrayLiteral: photosDictionary["photo"])
+                    
+                   // photosDictionary["photo"]![1]!["url_m"]
+ 
+
+                    for photo in photoDictionary{
+                        
+                        var photoURL: String = photo["url_m"] as! String
+                        
+                        
+                        
+                        
+                        photosArray.append(photoURL)
+
+
+             
+                    }
+                      println(photosArray)
+
+                    }
+                    
+                 //  println(photosDictionary["photo"]![1]!["url_m"])
+                        
+                    
                     
                 } else {
-                    println("Cant find key 'photos' in \(parsedResult)")
+                   // println("Cant find key 'photos' in \(parsedResult)")
                 }
+                                   }
             }
-        }
+        
         
         task.resume()
     }
 
 
     
-//        let session = NSURLSession.sharedSession()
-//        let urlString = BASE_URL + escapedParameters(methodArguments as! [String : AnyObject])
-//        let url = NSURL(string: urlString)!
-//        let request = NSURLRequest(URL: url)
-//        
-//        /* 4 - Initialize task for getting data */
-//        let task = session.dataTaskWithRequest(request) {data, response, downloadError in
-//            if let error = downloadError {
-//                println("Could not complete the request \(error)")
-//            } else {
-//                /* 5 - Success! Parse the data */
-//                var parsingError: NSError? = nil
-//                let parsedResult: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError)
-//                
-//                
-//                if let photosDictionary = parsedResult.valueForKey("photos") as? NSDictionary {
-//                    if let photoArray = photosDictionary.valueForKey("photo") as? [[String: AnyObject]] {
-//                        
-//                        /* 6 - Grab a single, random image */
-//                        let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
-//                        let photoDictionary = photoArray[randomPhotoIndex] as [String: AnyObject]
-//                        
-//                        /* 7 - Get the image url and title */
-//                        let photoTitle = photoDictionary["title"] as? String
-//                        let imageUrlString = photoDictionary["url_m"] as? String
-//                        let imageURL = NSURL(string: imageUrlString!)
-//                        
-//                        /* 8 - If an image exists at the url, set the image and title */
-//                        if let imageData = NSData(contentsOfURL: imageURL!) {
-//                            dispatch_async(dispatch_get_main_queue(), {
-//                                self.photoImageView.image = UIImage(data: imageData)
-//                                self.photoTitle.text = photoTitle
-//                            })
-//                        } else {
-//                            println("Image does not exist at \(imageURL)")
-//                        }
-//                    } else {
-//                        println("Cant find key 'photo' in \(photosDictionary)")
-//                    }
-//                } else {
-//                    println("Cant find key 'photos' in \(parsedResult)")
-//                }
-//            }
-//        }
-//        
-//        /* 9 - Resume (execute) the task */
-//        task.resume()
-//        
-//        
-//        
-//        
-//    }
-//    
+ 
     func escapedParameters(parameters: [String : AnyObject]) -> String {
         
         var urlVars = [String]()
