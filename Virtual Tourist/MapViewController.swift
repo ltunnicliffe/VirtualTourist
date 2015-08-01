@@ -12,6 +12,7 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     
+
     
     @IBOutlet var mapView: MKMapView!
     
@@ -23,13 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var label = UILabel()
     var labelHeight:CGFloat = 60
 
-    
-    
-    var defaults = NSUserDefaults.standardUserDefaults()
-
-    
-    
-    
+   
     
     @IBAction func deleteButton(sender: AnyObject) {
         if deleteOn == false {
@@ -72,15 +67,68 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations(locationArray)
     }
     override func viewDidLoad() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"saveCurrentRegion:", name:UIApplicationWillTerminateNotification, object:nil)
+        
+        
+        
         super.viewDidLoad()
         refreshAnnotations()
         var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "action:")
         mapView.addGestureRecognizer(longPressRecognizer)
+        
+        
+        loadSavedRegion()
+  
+
+        
+    }
+    
+    func saveCurrentRegion(notification:NSNotification){
+        
+        
+        var currentRegionLatdelta =  mapView.region.span.latitudeDelta
+        var currentRegionLongdelta =  mapView.region.span.longitudeDelta
+        var currentRegionCenterLatitude =  mapView.region.center.latitude
+        var currentRegionCenterLongitude =  mapView.region.center.longitude
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+
+        defaults.setDouble(currentRegionLatdelta, forKey: "currentRegionLatdelta")
+        defaults.setDouble(currentRegionLongdelta, forKey: "currentRegionLongdelta")
+        defaults.setDouble(currentRegionCenterLatitude, forKey: "currentRegionCenterLatitude")
+        defaults.setDouble(currentRegionCenterLongitude, forKey: "currentRegionCenterLongitude")
+  
+        
+        println("save called")
+
+        
     }
     
     
-    //A function for creating a label programatically.
-    func labelMaker() {
+    func loadSavedRegion(){
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        
+        
+        var currentRegionLatdelta = defaults.doubleForKey("currentRegionLatdelta")
+        var currentRegionLongdelta = defaults.doubleForKey("currentRegionLongdelta")
+        var currentRegionCenterLatitude = defaults.doubleForKey("currentRegionCenterLatitude")
+        var currentRegionCenterLongitude = defaults.doubleForKey("currentRegionCenterLongitude")
+        
+        var span:MKCoordinateSpan = MKCoordinateSpanMake(currentRegionLatdelta, currentRegionLongdelta)
+        var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentRegionCenterLatitude, currentRegionCenterLongitude)
+        var region:MKCoordinateRegion = MKCoordinateRegionMake (location, span)
+        
+        mapView.setRegion(region, animated:true)
+
+
+    }
+   
+    
+        func labelMaker() {
         label.frame = CGRectMake(0,self.view.frame.maxY - labelHeight, self.view.frame.width,labelHeight)
         label.text = "Tap Pins to Delete"
         label.backgroundColor = UIColor.redColor()
@@ -162,8 +210,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
      else  {
             
-            println("delete is off")
-
+        //   saveCurrentRegion()
             
         let flickrViewController = self.storyboard!.instantiateViewControllerWithIdentifier("FlickrCollectionViewController") as! FlickrCollectionViewController
         var chosenLatitude: Double = view.annotation.coordinate.latitude
@@ -178,6 +225,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
 
     }
+    
+
 
 }
 

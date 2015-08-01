@@ -42,7 +42,7 @@
                     <connections>
                         <outlet property="deleteButton" destination="ahF-pT-MUg" id="MdW-14-EVM"/>
                         <outlet property="mapView" destination="NWr-Gw-vGG" id="9qq-J4-OdL"/>
-                        <segue destination="05P-0s-fp7" kind="show" id="pyN-Ii-Igs"/>
+                        <segue destination="05P-0s-fp7" kind="show" identifier="viewControllerSegue" id="pyN-Ii-Igs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fao-AQ-9JK" userLabel="First Responder" sceneMemberID="firstResponder"/>
