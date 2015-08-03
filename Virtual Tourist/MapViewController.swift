@@ -215,8 +215,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let flickrViewController = self.storyboard!.instantiateViewControllerWithIdentifier("FlickrCollectionViewController") as! FlickrCollectionViewController
         var chosenLatitude: Double = view.annotation.coordinate.latitude
         var chosenLongitude: Double = view.annotation.coordinate.longitude
-        mapView.deselectAnnotation(view.annotation, animated: true)
+            println(chosenLatitude)
+            println(chosenLongitude)
 
+        mapView.deselectAnnotation(view.annotation, animated: true)
         flickrViewController.transferredLatitude = chosenLatitude
         flickrViewController.transferredLongitude = chosenLongitude
       //  self.presentViewController(flickrViewController, animated: true, completion: nil)

@@ -49,6 +49,11 @@ class FlickrLogin: NSObject {
     
     func getImageFromFlickrBySearch(methodArguments: [String : AnyObject]) {
         
+        println(methodArguments["lat"])
+        println(methodArguments["lon"])
+        photosArray = []
+        println("\(photosArray)")
+        
         let session = NSURLSession.sharedSession()
         let urlString = BASE_URL + escapedParameters(methodArguments)
         let url = NSURL(string: urlString)!
@@ -65,11 +70,7 @@ class FlickrLogin: NSObject {
                 if let photosDictionary = parsedResult.valueForKey("photos") as? NSDictionary {
                     
                     if let photoDictionary = photosDictionary.valueForKey("photo") as? NSArray {
-                    
-                    //var photoArray:Array = Array(arrayLiteral: photosDictionary["photo"])
-                    
-                   // photosDictionary["photo"]![1]!["url_m"]
- 
+
 
                     for photo in photoDictionary{
                         

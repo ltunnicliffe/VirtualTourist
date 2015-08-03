@@ -23,33 +23,19 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
         var transferredLongitude:Double!
         
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        
+        var span:MKCoordinateSpan = MKCoordinateSpanMake(0.3, 0.3)
+        var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(transferredLatitude, transferredLongitude)
+        var region:MKCoordinateRegion = MKCoordinateRegionMake (location, span)
+        mapView2.setRegion(region, animated:true)
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        dispatch_async(dispatch_get_main_queue()) {
-
-        
+       dispatch_async(dispatch_get_main_queue()) {
         FlickrLogin.sharedInstance().loginToFlickr(self.transferredLatitude, selectedLongitude: self.transferredLongitude)
         }
-
-        // Do any additional setup after loading the view.
     }
     @IBAction func newCollectionButton(sender: AnyObject) {
-        
         collectionView.reloadData()
-
-        
         }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -65,34 +51,19 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
         layout.itemSize = CGSize(width: width, height: width)
         collectionView.collectionViewLayout = layout
     }
-
-    
-         //MARK: - UICollectionView
         
         func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-            
-            
             return 1
         }
         
         func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      
-      //      println(photosArray.count)
            return photosArray.count
-            //return 5
         }
         
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
-            
             var chosenString = photosArray[indexPath.row]
-          
             var url = NSURL(string: chosenString)
-            
-          //  println(url)
-                
-
             let urlRequest = NSURLRequest(URL: url!)
             NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
                 if error != nil {
@@ -103,12 +74,8 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
                 cell.flickrImage.image =  imageVariable
                 }
                 }
- }
- 
-            
+            }
             return cell
         }
-        
-       
     
 }
