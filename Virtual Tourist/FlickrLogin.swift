@@ -48,59 +48,40 @@ class FlickrLogin: NSObject {
     }
     
     func getImageFromFlickrBySearch(methodArguments: [String : AnyObject]) {
-        
         println(methodArguments["lat"])
         println(methodArguments["lon"])
         photosArray = []
         println("\(photosArray)")
-        
         let session = NSURLSession.sharedSession()
         let urlString = BASE_URL + escapedParameters(methodArguments)
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
-        
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
             if let error = downloadError {
-           //     println("Could not complete the request \(error)")
+                println("Could not complete the request \(error)")
             } else {
-                
                 var parsingError: NSError? = nil
-                let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
-                
+                let parsedResult: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError)
                 if let photosDictionary = parsedResult.valueForKey("photos") as? NSDictionary {
-                    
                     if let photoDictionary = photosDictionary.valueForKey("photo") as? NSArray {
-
-
-                    for photo in photoDictionary{
-                        
+                        for photo in photoDictionary{
                         var photoURL: String = photo["url_m"] as! String
-                        
-                        
-                        
-                        
                         photosArray.append(photoURL)
-
-
-             
+                        }
                     }
-              //        println(photosArray)
-
+                    else {
+                        println("Cant find key 'photo' in \(photosDictionary)")
                     }
-                    
-                 //  println(photosDictionary["photo"]![1]!["url_m"])
-                        
-                    
-                    
                 } else {
-                   // println("Cant find key 'photos' in \(parsedResult)")
+                     println("Cant find key 'photo' in \(parsedResult)")
+                   }
+            
                 }
-                                   }
             }
-        
-        
+    
         task.resume()
-    }
+}
+
 
 
     

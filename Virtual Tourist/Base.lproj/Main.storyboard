@@ -108,11 +108,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="2kW-VO-Rbt">
+                                                    <rect key="frame" x="81" y="76" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.23654522659999999" green="0.34564908049999998" blue="0.93189538039999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="2kW-VO-Rbt" id="Ysg-fe-hab"/>
                                             <outlet property="flickrImage" destination="mVt-F5-FkO" id="Qx4-Hh-Ow7"/>
                                         </connections>
                                     </collectionViewCell>

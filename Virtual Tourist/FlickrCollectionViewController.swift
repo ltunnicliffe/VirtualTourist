@@ -17,6 +17,7 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
    @IBOutlet weak var collectionView: UICollectionView!
 
 
+
     @IBOutlet var mapView2: MKMapView!
         
         var transferredLatitude:Double!
@@ -62,20 +63,29 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
         
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
+            cell.activityIndicator.alpha = 1.0
+            cell.activityIndicator.startAnimating()
             var chosenString = photosArray[indexPath.row]
-            var url = NSURL(string: chosenString)
-            let urlRequest = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-                if error != nil {
-                println(error)
-                }
-                else{
-                if let imageVariable = UIImage(data: data) {
-                cell.flickrImage.image =  imageVariable
-                }
-                }
+            let urlRequest = NSURL(string: chosenString)
+            if let imageData = NSData(contentsOfURL: urlRequest!) {
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let imageVariable = UIImage(data: imageData) {
+                        cell.activityIndicator.alpha = 0.0
+                        cell.activityIndicator.stopAnimating()
+                        cell.flickrImage!.image =  imageVariable
+                    }
+                    else{
+                        println("Unable to get image.")
+                        cell.activityIndicator.alpha = 0.0
+                        cell.activityIndicator.stopAnimating()
+                    }
+                    })
+            }else {
+                println("Image does not exist at \(urlRequest)")
+                cell.activityIndicator.alpha = 0.0
+                cell.activityIndicator.stopAnimating()
             }
-            return cell
-        }
-    
+     return cell
+    }
+
 }
