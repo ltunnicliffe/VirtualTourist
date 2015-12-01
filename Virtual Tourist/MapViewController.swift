@@ -8,16 +8,23 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
 
+    
+    
+    
     
     @IBOutlet var mapView: MKMapView!
     
     @IBOutlet var deleteButton: UIBarButtonItem!
 
     var locationArray = [MKPointAnnotation]()
+    var locations = [NSManagedObject]()
+
+
 
     var deleteOn = false
     var label = UILabel()
@@ -61,8 +68,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     func refreshAnnotations(){
+        
+        self.mapView
+        
         mapView.addAnnotations(locationArray)
+        
+        addSavedLocations()
+        
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        addSavedLocations()
+    }
+    
+    
+
+    
     override func viewDidLoad() {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"saveCurrentRegion:", name:UIApplicationWillTerminateNotification, object:nil)
@@ -70,15 +92,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"saveCurrentRegion:", name:
             UIApplicationDidEnterBackgroundNotification, object:nil)
 
-        
+        addSavedLocations()
+
         super.viewDidLoad()
         refreshAnnotations()
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "action:")
         mapView.addGestureRecognizer(longPressRecognizer)
-        
+
         
         loadSavedRegion()
-  
 
         
     }
