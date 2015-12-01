@@ -11,7 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    
 
     
     @IBOutlet var mapView: MKMapView!
@@ -24,8 +23,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var label = UILabel()
     var labelHeight:CGFloat = 60
 
-   
-    
     @IBAction func deleteButton(sender: AnyObject) {
         if deleteOn == false {
             deleteButton.title = "Done"
@@ -38,7 +35,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.mapView.frame.origin.y = 0
              deleteOn = false
         }
-      //  println(locationArray)
     }
 
     func action (gestureRecognizer: UIGestureRecognizer) {
@@ -52,13 +48,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         else
         {
         
-        var touchPoint = gestureRecognizer.locationInView(self.mapView)
+        let touchPoint = gestureRecognizer.locationInView(self.mapView)
             
-        var newCoordinate: CLLocationCoordinate2D = mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView)
-        var myAnnotation = MKPointAnnotation()
+        let newCoordinate: CLLocationCoordinate2D = mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView)
+        let myAnnotation = MKPointAnnotation()
         myAnnotation.coordinate = newCoordinate
+         //   myAnnotation.title = "hello"
       //  myAnnotation.title = "Hello"
-        locationArray.append(myAnnotation)
+            saveLocation(myAnnotation)
         self.mapView.addGestureRecognizer(gestureRecognizer)
         refreshAnnotations()
         }
@@ -70,11 +67,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"saveCurrentRegion:", name:UIApplicationWillTerminateNotification, object:nil)
         
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"saveCurrentRegion:", name:
+            UIApplicationDidEnterBackgroundNotification, object:nil)
+
         
         super.viewDidLoad()
         refreshAnnotations()
-        var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "action:")
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "action:")
         mapView.addGestureRecognizer(longPressRecognizer)
         
         
@@ -87,10 +86,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func saveCurrentRegion(notification:NSNotification){
         
         
-        var currentRegionLatdelta =  mapView.region.span.latitudeDelta
-        var currentRegionLongdelta =  mapView.region.span.longitudeDelta
-        var currentRegionCenterLatitude =  mapView.region.center.latitude
-        var currentRegionCenterLongitude =  mapView.region.center.longitude
+        let currentRegionLatdelta =  mapView.region.span.latitudeDelta
+        let currentRegionLongdelta =  mapView.region.span.longitudeDelta
+        let currentRegionCenterLatitude =  mapView.region.center.latitude
+        let currentRegionCenterLongitude =  mapView.region.center.longitude
         
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -101,7 +100,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         defaults.setDouble(currentRegionCenterLongitude, forKey: "currentRegionCenterLongitude")
   
         
-        println("save called")
+        print("save called")
 
         
     }
@@ -113,14 +112,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         
         
-        var currentRegionLatdelta = defaults.doubleForKey("currentRegionLatdelta")
-        var currentRegionLongdelta = defaults.doubleForKey("currentRegionLongdelta")
-        var currentRegionCenterLatitude = defaults.doubleForKey("currentRegionCenterLatitude")
-        var currentRegionCenterLongitude = defaults.doubleForKey("currentRegionCenterLongitude")
+        let currentRegionLatdelta = defaults.doubleForKey("currentRegionLatdelta")
+        let currentRegionLongdelta = defaults.doubleForKey("currentRegionLongdelta")
+        let currentRegionCenterLatitude = defaults.doubleForKey("currentRegionCenterLatitude")
+        let currentRegionCenterLongitude = defaults.doubleForKey("currentRegionCenterLongitude")
         
-        var span:MKCoordinateSpan = MKCoordinateSpanMake(currentRegionLatdelta, currentRegionLongdelta)
-        var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentRegionCenterLatitude, currentRegionCenterLongitude)
-        var region:MKCoordinateRegion = MKCoordinateRegionMake (location, span)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(currentRegionLatdelta, currentRegionLongdelta)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentRegionCenterLatitude, currentRegionCenterLongitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake (location, span)
         
         mapView.setRegion(region, animated:true)
 
@@ -147,61 +146,73 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
 
     
-    
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-   //     println("View for annotation on.")
-        if annotation is MKUserLocation {
-            //return nil so map view draws "blue dot" for standard user location
-            return nil
-        }
-       // println("Does this work?")
+//    
+//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+//       
+//        var pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+//        pinView.canShowCallout = true
+//        //pinView.centerOffset = CGPointMake(100, -200)
+//        pinView.pinColor = MKPinAnnotationColor.Green
+//        pinView.animatesDrop = true
+//        return pinView
+//        
+//        
+//    }
 
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = false
-            pinView!.centerOffset = CGPoint(x: 0.0, y: 200.0)
-//            pinView!.animatesDrop = true
-//            pinView!.pinColor = .Green
-//            pinView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
-        }
-        else {
-            pinView!.annotation = annotation
-        }
-        return pinView
-    }
     
-   
- 
-    
-    
-    
-    
-    
- 
-
-    func mapView(mapView: MKMapView!, didDeselectAnnotationView view: MKAnnotationView!) {
         
-        println("annotation selected")
+        
+//        if annotation is MKUserLocation {
+//            return nil
+//        }
+//
+//        let reuseId = "pin"
+//        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+//        if pinView == nil {
+//            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+//            pinView!.canShowCallout = true
+//            pinView!.centerOffset = CGPointMake(10, -20)
+//
+//
+//        }
+//        else {
+//            pinView!.annotation = annotation
+//        }
+//        return pinView
+//        
+        
+        
+        
+//        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+//        annotationView.canShowCallout = false
+//        
+//        return annotationView
+        
+   
+    
+ 
+
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        
+        print("annotation selected")
         
         if deleteOn == true {
          //   println("View to be deleted: \(view)")
           //  println("Array from which to remove items: \(locationArray)")
             
-            println("delete is on")
+            print("delete is on")
             
           var arrayCounter = 0
            for arrayAnnotation in locationArray{
-            println(arrayAnnotation.coordinate.latitude)
-            if view.annotation.coordinate.latitude == arrayAnnotation.coordinate.latitude && view.annotation.coordinate.longitude == arrayAnnotation.coordinate.longitude {
+            print(arrayAnnotation.coordinate.latitude)
+            if view.annotation!.coordinate.latitude == arrayAnnotation.coordinate.latitude && view.annotation!.coordinate.longitude == arrayAnnotation.coordinate.longitude {
 //                println("Before removal: \(locationArray)")
 
                 locationArray.removeAtIndex(arrayCounter)
                 mapView.removeAnnotation(arrayAnnotation)
 
 //                println("After removal: \(locationArray)")
-                println("match!")
+                print("match!")
                 return
             }
             arrayCounter++
@@ -213,10 +224,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //   saveCurrentRegion()
             
         let flickrViewController = self.storyboard!.instantiateViewControllerWithIdentifier("FlickrCollectionViewController") as! FlickrCollectionViewController
-        var chosenLatitude: Double = view.annotation.coordinate.latitude
-        var chosenLongitude: Double = view.annotation.coordinate.longitude
-            println(chosenLatitude)
-            println(chosenLongitude)
+        let chosenLatitude: Double = view.annotation!.coordinate.latitude
+        let chosenLongitude: Double = view.annotation!.coordinate.longitude
+            print(chosenLatitude)
+            print(chosenLongitude)
 
         mapView.deselectAnnotation(view.annotation, animated: true)
         flickrViewController.transferredLatitude = chosenLatitude

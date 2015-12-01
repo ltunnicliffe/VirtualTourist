@@ -18,6 +18,7 @@
 		AC5828FA1B6A2A1A0008B85B /* AnnotationSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5828F91B6A2A1A0008B85B /* AnnotationSubclass.swift */; };
 		ACACD3601B68782A009496E6 /* FlickrCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */; };
 		ACBB224E1B68EF390068EDB6 /* FlickrLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB224D1B68EF390068EDB6 /* FlickrLogin.swift */; };
+		ACF26CA11C0D985F002E7109 /* SavePins.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF26CA01C0D985F002E7109 /* SavePins.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AC5828F91B6A2A1A0008B85B /* AnnotationSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationSubclass.swift; sourceTree = "<group>"; };
 		ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrCollectionViewController.swift; sourceTree = "<group>"; };
 		ACBB224D1B68EF390068EDB6 /* FlickrLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrLogin.swift; sourceTree = "<group>"; };
+		ACF26CA01C0D985F002E7109 /* SavePins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavePins.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				AC5828F71B6A23090008B85B /* PhotoCell.swift */,
 				AC04C23A1B61699000D67F33 /* AppDelegate.swift */,
 				AC3CEC161B67407400BDB502 /* MapViewController.swift */,
+				ACF26CA01C0D985F002E7109 /* SavePins.swift */,
 				AC5828F91B6A2A1A0008B85B /* AnnotationSubclass.swift */,
 				AC04C2411B61699000D67F33 /* Main.storyboard */,
 				ACACD35F1B68782A009496E6 /* FlickrCollectionViewController.swift */,
@@ -171,7 +174,9 @@
 		AC04C22D1B61699000D67F33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Luke Tunnicliffe";
 				TargetAttributes = {
 					AC04C2341B61699000D67F33 = {
@@ -229,6 +234,7 @@
 			files = (
 				ACBB224E1B68EF390068EDB6 /* FlickrLogin.swift in Sources */,
 				AC5828F81B6A23090008B85B /* PhotoCell.swift in Sources */,
+				ACF26CA11C0D985F002E7109 /* SavePins.swift in Sources */,
 				AC3CEC171B67407400BDB502 /* MapViewController.swift in Sources */,
 				AC5828FA1B6A2A1A0008B85B /* AnnotationSubclass.swift in Sources */,
 				ACACD3601B68782A009496E6 /* FlickrCollectionViewController.swift in Sources */,
@@ -296,6 +302,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -362,6 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Virtual Tourist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TunnicliffeMedia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -372,6 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Virtual Tourist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TunnicliffeMedia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -379,16 +388,13 @@
 		AC04C25B1B61699000D67F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Virtual TouristTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TunnicliffeMedia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Virtual Tourist.app/Virtual Tourist";
 			};
@@ -397,12 +403,9 @@
 		AC04C25C1B61699000D67F33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "Virtual TouristTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TunnicliffeMedia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Virtual Tourist.app/Virtual Tourist";
 			};

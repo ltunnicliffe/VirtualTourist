@@ -24,11 +24,11 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        var span:MKCoordinateSpan = MKCoordinateSpanMake(0.3, 0.3)
-        var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(transferredLatitude, transferredLongitude)
-        var region:MKCoordinateRegion = MKCoordinateRegionMake (location, span)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.3, 0.3)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(transferredLatitude, transferredLongitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake (location, span)
         mapView2.setRegion(region, animated:true)
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
        dispatch_async(dispatch_get_main_queue()) {
         FlickrLogin.sharedInstance().loginToFlickr(self.transferredLatitude, selectedLongitude: self.transferredLongitude)
         }
@@ -62,15 +62,16 @@ class FlickrCollectionViewController: UIViewController, UICollectionViewDataSour
         
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
-            var chosenString = photosArray[indexPath.row]
-            var url = NSURL(string: chosenString)
+        
+            let chosenString = photosArray[indexPath.row]
+            let url = NSURL(string: chosenString)
             let urlRequest = NSURLRequest(URL: url!)
             NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
                 if error != nil {
-                println(error)
+                print(error)
                 }
                 else{
-                if let imageVariable = UIImage(data: data) {
+                if let imageVariable = UIImage(data: data!) {
                 cell.flickrImage.image =  imageVariable
                 }
                 }

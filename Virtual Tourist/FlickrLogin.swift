@@ -49,10 +49,10 @@ class FlickrLogin: NSObject {
     
     func getImageFromFlickrBySearch(methodArguments: [String : AnyObject]) {
         
-        println(methodArguments["lat"])
-        println(methodArguments["lon"])
+        print(methodArguments["lat"])
+        print(methodArguments["lon"])
         photosArray = []
-        println("\(photosArray)")
+        print("\(photosArray)")
         
         let session = NSURLSession.sharedSession()
         let urlString = BASE_URL + escapedParameters(methodArguments)
@@ -61,49 +61,31 @@ class FlickrLogin: NSObject {
         
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
             if let error = downloadError {
-           //     println("Could not complete the request \(error)")
+               print("Could not complete the request \(error)")
             } else {
-                
-                var parsingError: NSError? = nil
-                let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
-                
+//                var parsingError: NSError? = nil
+                let parsedResult = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
                 if let photosDictionary = parsedResult.valueForKey("photos") as? NSDictionary {
-                    
                     if let photoDictionary = photosDictionary.valueForKey("photo") as? NSArray {
-
-
                     for photo in photoDictionary{
-                        
-                        var photoURL: String = photo["url_m"] as! String
-                        
-                        
-                        
-                        
-                        photosArray.append(photoURL)
-
-
-             
+                        if let photoURL: String = photo["url_m"] as? String{
+                            photosArray.append(photoURL)
+                        }
+                        else {
+                            print("No url_m" )
+                        }
                     }
-              //        println(photosArray)
-
+                    }else {
+                            print("Cant find key 'photo' in \(photosDictionary)")
+                        }
+                    } else {
+                         print("Cant find key 'photo' in \(parsedResult)")
                     }
-                    
-                 //  println(photosDictionary["photo"]![1]!["url_m"])
-                        
-                    
-                    
-                } else {
-                   // println("Cant find key 'photos' in \(parsedResult)")
-                }
-                                   }
+              }
             }
-        
-        
         task.resume()
     }
 
-
-    
  
     func escapedParameters(parameters: [String : AnyObject]) -> String {
         
@@ -122,7 +104,7 @@ class FlickrLogin: NSObject {
             
         }
         
-        return (!urlVars.isEmpty ? "?" : "") + join("&", urlVars)
+        return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
     }
 
     
